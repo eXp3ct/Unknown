@@ -4,19 +4,25 @@ using UnityEngine;
 public class PickUpable : MonoBehaviour
 {
     public bool Picked = false;
-    private Rigidbody _rigidBody;
-    private Transform _transform;
     [HideInInspector] public Transform PickUp { private get; set; }
+    [HideInInspector] public MeshFilter MeshFilter;
+    [HideInInspector] public MeshRenderer MeshRenderer;
+
+    [HideInInspector] public Rigidbody RigidBody;
+    private Transform _transform;
     private void Start()
     {
         _transform = transform;
+        MeshFilter = GetComponent<MeshFilter>();
+        RigidBody = GetComponent<Rigidbody>();
     }
+    // Попробовать события и не проверять каждый кадр
     private void Update()
     {
         if (Picked)
             _transform.position = PickUp.position;
         else
-            _rigidBody.velocity = Physics.gravity * .5f;
+            RigidBody.velocity = Physics.gravity * .5f;
     }
     
 }

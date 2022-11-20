@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] private Transform _pickUp;
-    private bool _isPicking;
+    [HideInInspector] public bool IsPicking;
     private PickUpable _pickedItem;
     private void Update()
     {
@@ -14,7 +14,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<PickUpable>(out PickUpable pickUpable))
         {
-            if (!_isPicking)
+            if (!IsPicking)
             {
                 _pickedItem = pickUpable;
                 PickUp(pickUpable);
@@ -23,13 +23,13 @@ public class PlayerCollision : MonoBehaviour
     }
     private void PickUp(PickUpable pickUpable)
     {
-        _isPicking = true;
+        IsPicking = true;
         pickUpable.Picked = true;
         pickUpable.PickUp = _pickUp;
     }
     private void DropItem(PickUpable pickUpable)
     {
-        _isPicking = false;
+        IsPicking = false;
         pickUpable.Picked = false;
     }
 }

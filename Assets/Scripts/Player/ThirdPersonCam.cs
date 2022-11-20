@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ThirdPersonCam : MonoBehaviour
@@ -12,8 +13,22 @@ public class ThirdPersonCam : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        HideCursor();
+    }
+
+    private void FixedUpdate()
+    {
+        if (GetInput.PressedAlt)
+        {
+            if(Cursor.lockState == CursorLockMode.Locked)
+            {
+                ShowCursor();
+                return;
+            }
+                
+            HideCursor();
+        }
+            
     }
     private void Update()
     {
@@ -28,6 +43,15 @@ public class ThirdPersonCam : MonoBehaviour
 
         if (inputDirection != Vector3.zero)
             _playerObj.forward = Vector3.Slerp(_playerObj.forward, inputDirection.normalized, Time.deltaTime * _rotationSpeed);
-
+    }
+    private void HideCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+    private void ShowCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }
