@@ -1,4 +1,6 @@
 ﻿
+using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public static class GameObjectExtension
@@ -7,4 +9,5 @@ public static class GameObjectExtension
     {
         return gameObject.TryGetComponent<T>(out T component);
     }
+
 }

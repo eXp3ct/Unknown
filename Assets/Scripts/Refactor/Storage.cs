@@ -21,10 +21,13 @@ public class Storage : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        foreach (var item in _items)
+        if (_items.Count != 0)
         {
-            if(item.Picked == true)
-                _items.Remove(item);
+            foreach (var item in _items)
+            {
+                if (item.Picked == true)
+                    _items.Remove(item);
+            } 
         }
     }
     protected void AddToStorage(PickUpable pickUpable)

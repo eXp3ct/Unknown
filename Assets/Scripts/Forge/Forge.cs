@@ -11,7 +11,8 @@ public class Forge : MonoBehaviour
     [SerializeField] private Mesh _newMesh;
     [SerializeField] private Transform _output;
     [SerializeField] private Transform _buffer;
-    [SerializeField] private Image _progressBar;
+    [SerializeField] private ForgeUI _forgeUI;
+    [SerializeField] private ForgeVFX _forgeVFX;
 
     public void Bake(PickUpable item)
     {
@@ -23,36 +24,31 @@ public class Forge : MonoBehaviour
         item.Picked = false;
         item.transform.position = _buffer.position;
 
-        StartCoroutine(StartBake(item, BakingTime));
-        
+        StartFX(item);
+
         item.MeshFilter.mesh = _newMesh;
 
-        
-        Destroy(item.GetComponent<BoxCollider>());
+        Destroy(item.GetComponent<Collider>());
         item.AddComponent<CapsuleCollider>();
         
     }
 
-    private void ThrowBaked(PickUpable item)
+    public void ThrowBaked(PickUpable item)
     {
         item.transform.position = _output.position + new Vector3(0f, item.transform.localScale.y, 0f);
         Destroy(item.GetComponent<Wood>());
         item.AddComponent<Charcoal>();
-        ResetForge();
-    }
-    //Убрать из этого скрипта (Отрисовка != поведению)
-    private IEnumerator StartBake(PickUpable item, int bakingTime)
-    {
-        while(_progressBar.fillAmount != 1)
-        {
-            _progressBar.fillAmount += .25f;
-            yield return new WaitForSeconds(bakingTime);
-        }
-        ThrowBaked(item);
-    }
-    private void ResetForge()
-    {
-        _progressBar.fillAmount = 0;
+        StopFX();
         IsBacking = false;
+    }
+
+    private void StartFX(PickUpable item)
+    {
+        StartCoroutine(_forgeUI.StartBake(item, BakingTime));
+        _forgeVFX.StartFX();
+    }
+    private void StopFX()
+    {
+        _forgeVFX.StopFX();
     }
 }
