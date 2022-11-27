@@ -7,9 +7,9 @@ public class TreeCollision : MonoBehaviour
     {
         _tree = GetComponent<Tree>();
     }
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.HasComponent<PlayerCollision>())
             _tree.Fall();
-    }
+    }*/
 }

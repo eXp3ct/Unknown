@@ -1,7 +1,4 @@
-﻿
-using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
-using UnityEngine;
+﻿using UnityEngine;
 
 public static class GameObjectExtension
 {
@@ -9,5 +6,12 @@ public static class GameObjectExtension
     {
         return gameObject.TryGetComponent<T>(out T component);
     }
-
+    public static bool NearTo(this GameObject gameObject, Transform target)
+    {
+        var currentPosition = gameObject.transform.position;
+        var targetPosition = target.position;
+        if (Vector3.Distance(currentPosition, targetPosition) <= 5)
+            return true;
+        return false;
+    }
 }
