@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-
+[RequireComponent(typeof(TreeVFX))]
 public class Tree : MonoBehaviour
 {
-    [SerializeField] private GameObject _log;
     private const int _logsInTree = 3;
-    private PlayerCollision _player;
+
+    [SerializeField] private GameObject _log;
     [SerializeField] private TreeUI _treeUI;
+    private TreeVFX _treeVFX;
+    private PlayerCollision _player;
+    private MainHint _mainHint;
     private bool _canCutDown = false;
     private void Start()
     {
         _player = FindObjectOfType<PlayerCollision>();
+        _mainHint = FindObjectOfType<MainHint>();
+        _treeVFX = GetComponent<TreeVFX>();
     }
     private void Update()
     {
@@ -20,10 +22,15 @@ public class Tree : MonoBehaviour
             return;
         if (gameObject.NearTo(_player.gameObject.transform))
         {
-            _canCutDown = true;
-            StartCoroutine(_treeUI.CutDown());
+            _treeVFX.StartVFX();
+            _mainHint.SetText(HintType.Tree);
+            if (GetInput.PressedE)
+                InitializeCutDown();
         }
-            
+        else
+        {
+            _treeVFX.StopVFX();
+        }
     }
     public void Fall()
     {
@@ -31,6 +38,11 @@ public class Tree : MonoBehaviour
             Instantiate(_log, transform.position, Quaternion.Euler(new Vector3(0f, 0f, 30f)));
         Destroy(gameObject);
     }
-
+    private void InitializeCutDown()
+    {
+        _canCutDown = true;
+        PlayerMovement.Busy = true;
+        StartCoroutine(_treeUI.CutDown());
+    }
     
 }

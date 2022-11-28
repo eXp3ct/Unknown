@@ -2,6 +2,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
+    public static bool Busy = false;
     private enum PlayerState
     {
         Grounded,
@@ -41,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (Busy)
+            return;
         MovePlayer();
     }
     private void PlayerDrag()

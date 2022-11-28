@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(RectTransform))]
+[RequireComponent(typeof(Outline))]
 public class TreeUI : MonoBehaviour
 {
     [SerializeField] private Image _progressBar;
@@ -29,6 +30,7 @@ public class TreeUI : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         _tree.Fall();
+        PlayerMovement.Busy = false;
     }
     public void ResetUI()
     {

@@ -32,6 +32,8 @@ public class ThirdPersonCam : MonoBehaviour
     }
     private void Update()
     {
+        if (PlayerMovement.Busy)
+            return;
         //Rotate orientation
         Vector3 viewDirection = _playerTransform.position - new Vector3(transform.position.x, _playerTransform.position.y, transform.position.z);
         Orientaion.forward = viewDirection.normalized;
