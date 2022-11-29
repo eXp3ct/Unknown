@@ -14,13 +14,14 @@ public class MainHint : MonoBehaviour
     {
         switch(hintType)
         {
+            case HintType.None:
+                _text.text = string.Empty;
+                break;
             case HintType.Tree:
+                _text.CrossFadeAlpha(1, 1f, false);
                 _text.text = TreeHint;
+                _text.CrossFadeAlpha(0, 1f, false);
                 break;
         }
-    }
-    public void ClearText()
-    {
-        _text.text = string.Empty;
     }
 }

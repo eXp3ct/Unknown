@@ -13,9 +13,10 @@ public abstract class OutlineManager : MonoBehaviour
     {
         _outline = GetComponent<Outline>();
     }
-    protected void Highlight()
+    protected void Highlight(Outline.Mode outlineMode)
     {
         _outline.OutlineWidth = (float)OutlineWidth.Highlighted;
+        _outline.OutlineMode = outlineMode;
     }
     protected void RemoveHighlight()
     {

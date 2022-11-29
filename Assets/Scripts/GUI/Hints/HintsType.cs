@@ -1,4 +1,5 @@
 ﻿public enum HintType
 {
-    Tree =0
+    None = 0,
+    Tree = 1
 }

@@ -1,4 +1,8 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
+using Extensions;
+
 [RequireComponent(typeof(TreeVFX))]
 public class Tree : MonoBehaviour
 {
@@ -10,26 +14,43 @@ public class Tree : MonoBehaviour
     private PlayerCollision _player;
     private MainHint _mainHint;
     private bool _canCutDown = false;
+
+    private Action _startVFX;
+    private Action _stopVFX;
+
     private void Start()
     {
         _player = FindObjectOfType<PlayerCollision>();
         _mainHint = FindObjectOfType<MainHint>();
         _treeVFX = GetComponent<TreeVFX>();
     }
+    private void OnEnable()
+    {
+        _startVFX += () => _treeVFX.StartVFX();
+        _startVFX += () => _mainHint.SetText(HintType.Tree);
+
+        _stopVFX += () => _treeVFX.StopVFX();
+    }
+    private void OnDisable()
+    {
+        _startVFX -= () => _treeVFX.StartVFX();
+        _startVFX -= () => _mainHint.SetText(HintType.Tree);
+
+        _stopVFX -= () => _treeVFX.StopVFX();
+    }
     private void Update()
     {
         if (_canCutDown)
             return;
-        if (gameObject.NearTo(_player.gameObject.transform))
+        if (gameObject.NearTo(_player.transform))
         {
-            _treeVFX.StartVFX();
-            _mainHint.SetText(HintType.Tree);
+            _startVFX?.Invoke();
             if (GetInput.PressedE)
                 InitializeCutDown();
         }
         else
         {
-            _treeVFX.StopVFX();
+            _stopVFX?.Invoke();
         }
     }
     public void Fall()
