@@ -1,8 +1,8 @@
-using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
+[RequireComponent(typeof(ForgeUI))]
+[RequireComponent(typeof(ForgeVFX))]
 public class Forge : MonoBehaviour
 {
     public bool IsBacking = false;
@@ -12,8 +12,11 @@ public class Forge : MonoBehaviour
     [SerializeField] private Transform _output;
     [SerializeField] private Transform _buffer;
     [SerializeField] private ForgeUI _forgeUI;
-    [SerializeField] private ForgeVFX _forgeVFX;
-
+    private ForgeVFX _forgeVFX;
+    private void Start()
+    {
+        _forgeVFX = GetComponent<ForgeVFX>();
+    }
     public void Bake(PickUpable item)
     {
         if (item.MeshFilter.mesh == _newMesh)

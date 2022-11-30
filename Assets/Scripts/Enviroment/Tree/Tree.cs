@@ -26,17 +26,17 @@ public class Tree : MonoBehaviour
     }
     private void OnEnable()
     {
-        _startVFX += () => _treeVFX.StartVFX();
+        _startVFX += () => _treeVFX.Highlight();
         _startVFX += () => _mainHint.SetText(HintType.Tree);
 
-        _stopVFX += () => _treeVFX.StopVFX();
+        _stopVFX += () => _treeVFX.RemoveHightlight();
     }
     private void OnDisable()
     {
-        _startVFX -= () => _treeVFX.StartVFX();
+        _startVFX -= () => _treeVFX.Highlight();
         _startVFX -= () => _mainHint.SetText(HintType.Tree);
 
-        _stopVFX -= () => _treeVFX.StopVFX();
+        _stopVFX -= () => _treeVFX.RemoveHightlight();
     }
     private void Update()
     {
@@ -44,13 +44,13 @@ public class Tree : MonoBehaviour
             return;
         if (gameObject.NearTo(_player.transform))
         {
-            _startVFX?.Invoke();
+            //_startVFX?.Invoke();
             if (GetInput.PressedE)
                 InitializeCutDown();
         }
         else
         {
-            _stopVFX?.Invoke();
+            //_stopVFX?.Invoke();
         }
     }
     public void Fall()

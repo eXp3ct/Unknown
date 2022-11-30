@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c236aaa206cd6b045a3e8d75b0fec942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _forge: {fileID: 6023953663615731669}
+  _forge: {fileID: 6321901036871374899}
 --- !u!1 &7934595234027469346
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,12 +285,13 @@ GameObject:
   - component: {fileID: 7221163997925836919}
   - component: {fileID: 6023953663615731666}
   - component: {fileID: 8394031002827780888}
-  - component: {fileID: 9026232690886468912}
-  - component: {fileID: -3881993957473359365}
-  - component: {fileID: 6023953663615731669}
   - component: {fileID: 7186622510802846819}
   - component: {fileID: 3929907095566009399}
   - component: {fileID: 4102323839233599741}
+  - component: {fileID: 3825372141554459095}
+  - component: {fileID: 216759508935873172}
+  - component: {fileID: 9062084296761614865}
+  - component: {fileID: 6321901036871374899}
   m_Layer: 0
   m_Name: Forge
   m_TagString: Untagged
@@ -367,51 +368,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &9026232690886468912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8033694722013123277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01e80f30de099f047bde4f45db28a4a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-3881993957473359365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8033694722013123277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b725191efcab67146b8b4ef015e1659c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _progressBar: {fileID: 2058964582018381278}
-  _forge: {fileID: 6023953663615731669}
---- !u!114 &6023953663615731669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8033694722013123277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3303ec33be3e7244bac9483ce72478ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsBacking: 0
-  BakingTime: 1
-  _newMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
-  _output: {fileID: 7186622509509759144}
-  _buffer: {fileID: 5951949704131919490}
-  _forgeUI: {fileID: -3881993957473359365}
-  _forgeVFX: {fileID: 9026232690886468912}
 --- !u!64 &7186622510802846819
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5205,3 +5161,65 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &3825372141554459095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8033694722013123277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b725191efcab67146b8b4ef015e1659c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _progressBar: {fileID: 2058964582018381278}
+  _forge: {fileID: 6321901036871374899}
+--- !u!114 &216759508935873172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8033694722013123277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &9062084296761614865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8033694722013123277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01e80f30de099f047bde4f45db28a4a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6321901036871374899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8033694722013123277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3303ec33be3e7244bac9483ce72478ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsBacking: 0
+  BakingTime: 1
+  _newMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  _output: {fileID: 7186622509509759144}
+  _buffer: {fileID: 5951949704131919490}
+  _forgeUI: {fileID: 3825372141554459095}

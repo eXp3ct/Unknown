@@ -1,5 +1,12 @@
-public class PickUpableVFX : OutlineManager
+public class PickUpableVFX : OutlineManager, IHighlightable
 {
-    public void StartVFX() => Highlight(Outline.Mode.OutlineAll);
-    public void StopVFX() => RemoveHighlight();
+    public void Highlight()
+    {
+        base.Highlight(Outline.Mode.OutlineAll);
+    }
+
+    public void RemoveHightlight()
+    {
+        base.RemoveHighlight();
+    }
 }

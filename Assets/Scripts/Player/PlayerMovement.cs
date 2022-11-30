@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform _orientation;
     [SerializeField, Range(0f, 10f)] private float _groundDrag;
     [SerializeField, Range(0f, 10f)] private float _walkSpeed;
-    [SerializeField, Range(0f, 10f)] private float _shiftSpeed;
+    [SerializeField, Range(0f, 10f)] private float _runSpeed;
     private float _speed;
 
     [Header("Ground Check")]
@@ -84,12 +84,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (GetInput.PressedShift)
         {
-            if (_speed == _shiftSpeed)
+            if (_speed == _runSpeed)
             {
                 _speed = _walkSpeed;
                 return;
             }
-            _speed = _shiftSpeed;
+            _speed = _runSpeed;
         }
     }
 }

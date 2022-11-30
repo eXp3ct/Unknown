@@ -10,12 +10,11 @@ public class ForgeCollision : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.TryGetComponent<Wood>(out Wood item))
+        if (other.gameObject.TryGetComponent<Wood>(out Wood item))
         {
             _forge.Bake(item);
             _playerCollision.IsPicking = false;
             _forge.IsBacking = true;
         }
-            
     }
 }

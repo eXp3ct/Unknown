@@ -24,12 +24,12 @@ public class PickUpable : MonoBehaviour
         if (Picked)
         {
             _transform.position = PickUp.position;
-            _pickableVFX.StartVFX();
+            //_pickableVFX.StartVFX();
         }
         else
         {
             RigidBody.velocity = Physics.gravity * .5f;
-            _pickableVFX.StopVFX();
+            //_pickableVFX.StopVFX();
         }
            
     }

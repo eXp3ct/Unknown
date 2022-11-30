@@ -1,6 +1,12 @@
-using UnityEngine;
-public class TreeVFX : OutlineManager
+public class TreeVFX : OutlineManager, IHighlightable
 {
-    public void StartVFX() => Highlight(Outline.Mode.OutlineVisible);
-    public void StopVFX() => RemoveHighlight();
+    public void Highlight()
+    {
+        base.Highlight(Outline.Mode.OutlineVisible);
+    }
+
+    public void RemoveHightlight()
+    {
+        base.RemoveHighlight();
+    }
 }

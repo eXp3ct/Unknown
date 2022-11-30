@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ForgeVFX : MonoBehaviour
+public class ForgeVFX : OutlineManager, IHighlightable
 {
     private ParticleSystem _particleSystem;
 
@@ -17,5 +15,15 @@ public class ForgeVFX : MonoBehaviour
     public void StopFX()
     {
         _particleSystem.Stop();
+    }
+
+    public void Highlight()
+    {
+        Highlight(Outline.Mode.OutlineVisible);
+    }
+
+    public void RemoveHightlight()
+    {
+        RemoveHighlight();
     }
 }

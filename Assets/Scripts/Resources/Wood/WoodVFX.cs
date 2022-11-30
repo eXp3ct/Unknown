@@ -1,8 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class WoodVFX : OutlineManager
+public class WoodVFX : OutlineManager, IHighlightable
 {
-    
+    public void Highlight()
+    {
+        base.Highlight(Outline.Mode.OutlineAll);
+    }
+
+    public void RemoveHightlight()
+    {
+        base.RemoveHighlight();
+    }
 }
